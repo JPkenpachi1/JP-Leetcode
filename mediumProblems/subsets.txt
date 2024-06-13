@@ -1,0 +1,30 @@
+
+
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def backtrack(start, path):
+
+        # Add the current subset (path) to the results
+            result.append(path[:])
+        
+        # Iterate over the elements starting from 'start' index
+            for i in range(start, len(nums)):
+                # Include the element nums[i] in the current subset
+                path.append(nums[i])
+                # Recursively call backtrack to generate subsets including nums[i]
+                backtrack(i + 1, path)
+                # Exclude the element nums[i] and backtrack
+                path.pop()
+    
+        result = []
+        backtrack(0, [])
+        return result
+
+
+
+
+this is my first solution so i need to be better leanr this concept soon 
