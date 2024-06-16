@@ -1,0 +1,19 @@
+var minPatches = function(nums, n) {
+    let patches = 0;
+    let current = 1;
+    let i = 0;
+
+    while (current <= n) {
+        if (i < nums.length && nums[i] <= current) {
+            current += nums[i];
+            i++;
+        } else {
+            patches++;
+            current += current;
+        }
+    }
+
+    return patches;
+};
+// this is a hard problem took help from a Algoexpert so basciall this problem states that we need to get the sum of arrays so that its equal to n 
+lets say that n is  6 and arrays is [1,3] patches is 1 
