@@ -1,0 +1,30 @@
+class Solution(object):
+    def maxProfitAssignment(self, difficulty, profit, worker):
+        """
+        :type difficulty: List[int]
+        :type profit: List[int]
+        :type worker: List[int]
+        :rtype: int
+        """
+        # Create and sort jobs as tuples of (difficulty, profit)
+        jobs = sorted(zip(difficulty, profit))
+        
+       
+        
+        # Initialize variables
+        max_profit = 0
+        total_profit = 0
+        i = 0
+        n = len(jobs)
+        
+        # Iterate over each worker
+        for ab in worker:
+            # Move the job pointer as long as the worker can do the job
+            while i < n and ab >= jobs[i][0]:
+                max_profit = max(max_profit, jobs[i][1])
+                i += 1
+            # Add the maximum profit for this worker to the total profit
+            total_profit += max_profit
+        
+        return total_profit
+
