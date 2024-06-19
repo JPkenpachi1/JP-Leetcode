@@ -1,0 +1,27 @@
+def blooming(bloomingarray, m, k):
+    if m * k > len(bloomingarray):
+        return -1
+    
+    def bloomingdays(days):
+        b, f = 0, 0
+        for i in bloomingarray:
+            if i <= days:
+                f += 1
+                if f == k:
+                    b += 1
+                    f = 0
+            else:
+                f = 0
+        return b >= m
+
+    left, right = 1, max(bloomingarray)
+    while left < right:
+        mid = (left + right) // 2
+        if bloomingdays(mid):
+            right = mid
+        else:
+            left = mid + 1
+    
+    return left
+
+print(blooming([1, 10, 3, 10, 2], 3, 1))  # Output: 3
