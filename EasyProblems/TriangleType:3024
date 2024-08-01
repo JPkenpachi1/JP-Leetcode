@@ -1,0 +1,32 @@
+python
+
+class Solution(object):
+    def triangleType(self, nums):
+        if nums[0] + nums[1] <= nums[-1] or nums[1] + nums[-1] <= nums[0] or nums[-1] + nums[0] <= nums[1]:
+            return "none"
+        elif nums[0] == nums[1] == nums[2]:
+            return "equilateral"
+        elif nums[1] != nums[2] and nums[0] != nums[1] and nums[0] != nums[2]:
+            return "scalene"
+        else:
+            return "isosceles" 
+
+this is the top solution 
+
+this is my solution 
+ count =0
+    nums.sort()
+    for i in range(0,len(nums)-1):
+            if nums[i] == nums[i +1]:
+                count+=1
+            else:
+                count=0
+    
+    if count==0:
+        return "scalene"
+    elif count==2:
+        return "equilateral"
+    elif count==1:
+        return "isosceles"
+     this is solves the issue but i forgot the none test case 
+
