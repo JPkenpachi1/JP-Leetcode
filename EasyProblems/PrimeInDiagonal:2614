@@ -1,0 +1,45 @@
+class Solution:
+    def diagonalPrime(self, nums: List[List[int]]) -> int:
+        
+        def Prime(n):
+            if n <= 1:
+                return False
+            if n == 2:
+                return True
+            if n % 2 == 0:
+                return False
+            d = 3
+            while d * d <= n:
+                if n % d == 0:
+                    return False
+                d += 2
+            return True
+        
+        diagonals = []
+        prime = {}
+        
+        # Collect main diagonal elements
+        for i in range(len(nums)):
+            j = i
+            diagonals.append(nums[i][j])
+        
+        # Collect anti-diagonal elements
+        for i in range(len(nums)):
+            j = len(nums) - 1 - i
+            diagonals.append(nums[i][j])
+        
+        # Remove duplicates by converting to set and back to list
+        diagonals = list(set(diagonals))
+        
+        # Find primes and store in dictionary
+        for i in range(len(diagonals)):
+            if Prime(diagonals[i]):
+                prime[i] = diagonals[i]
+        
+        # Handle case where there are no primes
+        if prime:
+            return max(prime.values())
+        else:
+            return 0  # or another suitable default value
+
+Logice mine
